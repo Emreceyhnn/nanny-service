@@ -1,0 +1,429 @@
+{
+  "nannies": {
+    "nanny1": {
+      "name": "Anna Shevchenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/23.jpg",
+      "birthday": "1996-04-10T22:25:57.010+00:00",
+      "experience": "5 years",
+      "reviews": [
+        {
+          "reviewer": "Olga K.",
+          "rating": 5,
+          "comment": "Anna is wonderful! My kids loved her and she was always punctual."
+        },
+        {
+          "reviewer": "Petr S.",
+          "rating": 4,
+          "comment": "She's great, but sometimes she had to reschedule on short notice."
+        }
+      ],
+      "education": "Bachelor's in Early Childhood Education, First Aid Certified",
+      "kids_age": "1 to 6 years old",
+      "price_per_hour": 15,
+      "location": "Kyiv, Ukraine",
+      "about": "I love children and have been working with them for over 5 years. I believe in creating a positive and nurturing environment for kids. I also love outdoor activities and crafts.",
+      "characters": ["patient", "energetic", "creative", "punctual"],
+      "rating": 4.5
+    },
+    "nanny2": {
+      "name": "Maria Kovalenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/10.jpg",
+      "birthday": "1991-04-10T22:25:57.010+00:00",
+      "experience": "7 years",
+      "reviews": [
+        {
+          "reviewer": "Ivan D.",
+          "rating": 4.5,
+          "comment": "Maria is very caring and knows how to handle kids very well."
+        },
+        {
+          "reviewer": "Lena R.",
+          "rating": 5,
+          "comment": "Maria has been a blessing for our family. Our children adore her!"
+        }
+      ],
+      "education": "Master's in Child Psychology, CPR Certified",
+      "kids_age": "6 months to 8 years old",
+      "price_per_hour": 16,
+      "location": "Lviv, Ukraine",
+      "about": "I have a passion for teaching and mentoring children. I aim to help them grow and learn in a safe and loving environment. I am also a trained child psychologist, which helps me in understanding and catering to the unique needs of every child.",
+      "characters": ["compassionate", "knowledgeable", "adaptive", "trustworthy"],
+      "rating": 4.75
+    },
+    "nanny3": {
+      "name": "Olena Petrenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/37.jpeg",
+      "birthday": "1999-04-10T22:25:57.010+00:00",
+      "experience": "6 years",
+      "reviews": [
+        {
+          "reviewer": "Sergiy M.",
+          "rating": 4.7,
+          "comment": "Olena is dependable and has a natural way with children."
+        },
+        {
+          "reviewer": "Tetiana V.",
+          "rating": 5,
+          "comment": "My twins love spending time with her. Highly recommend!"
+        }
+      ],
+      "education": "Bachelor's in Child Development, Special Needs Child Care Training",
+      "kids_age": "2 to 10 years old",
+      "price_per_hour": 17,
+      "location": "Odesa, Ukraine",
+      "about": "Being with children brings joy to my day. I've worked with children of various birthday groups, including those with special needs. My approach is hands-on, engaging, and tailored to each child's unique personality.",
+      "characters": ["empathetic", "skilled", "observant", "enthusiastic"],
+      "rating": 4.85
+    },
+    "nanny4": {
+      "name": "Iryna Vasylchenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/25.jpg",
+      "birthday": "1999-04-10T22:25:57.010+00:00",
+      "experience": "4 years",
+      "reviews": [
+        {
+          "reviewer": "Dmytro L.",
+          "rating": 4.8,
+          "comment": "Iryna is fantastic with my toddler. She's always full of creative ideas."
+        },
+        {
+          "reviewer": "Anastasia P.",
+          "rating": 4.9,
+          "comment": "Very professional and genuinely cares for children. My son looks forward to the days she comes over."
+        }
+      ],
+      "education": "Associate's in Childcare Management, Nutrition for Children Course",
+      "kids_age": "1 to 5 years old",
+      "price_per_hour": 16,
+      "location": "Kharkiv, Ukraine",
+      "about": "I believe in creating a balanced routine for children, incorporating both learning and play. My background in child nutrition also allows me to ensure kids are eating healthily under my care.",
+      "characters": ["attentive", "nurturing", "resourceful", "consistent"],
+      "rating": 4.85
+    },
+    "nanny5": {
+      "name": "Kateryna Boyko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/30.jpg",
+      "birthday": "1992-04-10T22:25:57.010+00:00",
+      "experience": "8 years",
+      "reviews": [
+        {
+          "reviewer": "Yaroslav H.",
+          "rating": 5,
+          "comment": "Kateryna is very patient and kind. My daughter loves her storytelling sessions."
+        },
+        {
+          "reviewer": "Nataliia Z.",
+          "rating": 4.5,
+          "comment": "She's proactive and always brings fun activities for the kids."
+        }
+      ],
+      "education": "Bachelor's in Childhood Education, Certified in Children's Yoga",
+      "kids_age": "3 to 9 years old",
+      "price_per_hour": 19,
+      "location": "Dnipro, Ukraine",
+      "about": "I integrate mindfulness and yoga into play, making it a unique experience for children. I'm passionate about holistic child development and believe in cultivating both mind and body.",
+      "characters": ["calm", "innovative", "respectful", "engaging"],
+      "rating": 4.75
+    },
+    "nanny6": {
+      "name": "Valeriia Dybinka",
+      "avatar_url": "https://ftp.goit.study/img/avatars/21.jpg",
+       "birthday": "1994-04-10T22:25:57.010+00:00",
+      "experience": "6 years",
+      "reviews": [
+        {
+          "reviewer": "Roman T.",
+          "rating": 5,
+          "comment": "Valeriia is punctual and always brings educational toys. My son learns a lot when she's around."
+        },
+        {
+          "reviewer": "Oksana P.",
+          "rating": 4.7,
+          "comment": "She's very gentle with kids and always attentive to their needs."
+        }
+      ],
+      "education": "Bachelor's in Early Childhood Development, Child Safety Training",
+      "kids_age": "6 months to 7 years old",
+      "price_per_hour": 18,
+      "location": "Zaporizhzhia, Ukraine",
+      "about": "I believe every child is unique and has a distinct learning pace. I focus on individual attention and ensure each child's emotional and educational needs are met.",
+      "characters": ["meticulous", "caring", "proactive", "knowledgeable"],
+      "rating": 4.85
+    },
+    "nanny7": {
+      "name": "Sofiya Ostapenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/2.jpg",
+      "birthday": "1993-04-10T22:25:57.010+00:00",
+      "experience": "7 years",
+      "reviews": [
+        {
+          "reviewer": "Oleh V.",
+          "rating": 4.9,
+          "comment": "Sofiya has a gentle approach and is fantastic with our toddler. Always attentive."
+        },
+        {
+          "reviewer": "Larysa M.",
+          "rating": 4.8,
+          "comment": "She has a talent for connecting with children. Our daughter warmed up to her immediately."
+        }
+      ],
+      "education": "Master's in Child Psychology, Child First Aid Certification",
+      "kids_age": "2 to 8 years old",
+      "price_per_hour": 20,
+      "location": "Vinnytsia, Ukraine",
+      "about": "I integrate play with learning and focus on fostering independence in children. I have a keen understanding of child psychology which helps me tailor my approach to each child's needs.",
+      "characters": ["understanding", "creative", "dependable", "proactive"],
+      "rating": 4.85
+    },
+    "nanny8": {
+      "name": "Tetyana Horbatenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/16.jpg",
+       "birthday": "1998-04-10T22:25:57.010+00:00",
+      "experience": "5 years",
+      "reviews": [
+        {
+          "reviewer": "Mykhailo B.",
+          "rating": 5,
+          "comment": "Tetyana is both fun and disciplined. My kids have a great time with her, and they also follow routines well."
+        },
+        {
+          "reviewer": "Yuliia S.",
+          "rating": 4.6,
+          "comment": "She's great with arts and crafts and always has activities planned out."
+        }
+      ],
+      "education": "Bachelor's in Early Childhood Studies, Certified in Play Therapy",
+      "kids_age": "3 to 10 years old",
+      "price_per_hour": 18,
+      "location": "Chernihiv, Ukraine",
+      "about": "I'm a firm believer in the power of play for children's development. Whether it's arts and crafts, outdoor games, or reading, I ensure that kids are always engaged and learning.",
+      "characters": ["enthusiastic", "organized", "patient", "imaginative"],
+      "rating": 4.8
+    },
+    "nanny9": {
+      "name": "Natalia Shevchenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/4.jpg",
+       "birthday": "1999-04-10T22:25:57.010+00:00",
+      "experience": "4 years",
+      "reviews": [
+        {
+          "reviewer": "Volodymyr K.",
+          "rating": 4.8,
+          "comment": "Natalia is kind-hearted and always brings a smile to our daughter's face."
+        },
+        {
+          "reviewer": "Iryna F.",
+          "rating": 4.7,
+          "comment": "She's always punctual and keeps our son engaged with educational games."
+        }
+      ],
+      "education": "Bachelor's in Childhood Education, Montessori Training Certified",
+      "kids_age": "1 to 7 years old",
+      "price_per_hour": 17,
+      "location": "Poltava, Ukraine",
+      "about": "I'm passionate about the Montessori approach, promoting independence and respect for a child's natural psychological development. I focus on creating a supportive environment for children to explore and learn at their own pace.",
+      "characters": ["patient", "encouraging", "structured", "observant"],
+      "rating": 4.75
+    },
+    "nanny10": {
+      "name": "Iryna Holovko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/41.jpeg",
+      "birthday": "1997-04-10T22:25:57.010+00:00",
+      "experience": "6 years",
+      "reviews": [
+        {
+          "reviewer": "Dmytro S.",
+          "rating": 4.9,
+          "comment": "Iryna is very energetic and always comes up with new games for the kids."
+        },
+        {
+          "reviewer": "Olena L.",
+          "rating": 5,
+          "comment": "She's been a wonderful addition to our childcare routine. Highly dependable!"
+        }
+      ],
+      "education": "Bachelor's in Primary Education, Child Protection Training",
+      "kids_age": "2 to 9 years old",
+      "price_per_hour": 18,
+      "location": "Poltava, Ukraine",
+      "about": "I believe in a proactive approach to childcare, ensuring that children are engaged in both physical and educational activities. I'm dedicated to providing a safe and stimulating environment for every child.",
+      "characters": ["energetic", "creative", "reliable", "attentive"],
+      "rating": 4.95
+    },
+    "nanny11": {
+      "name": "Olena Kryvko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/49.jpeg",
+      "birthday": "1995-04-10T22:25:57.010+00:00",
+      "experience": "7 years",
+      "reviews": [
+        {
+          "reviewer": "Andriy M.",
+          "rating": 4.8,
+          "comment": "Olena is fantastic with my kids. She's very patient and always brings educational materials."
+        },
+        {
+          "reviewer": "Svitlana K.",
+          "rating": 4.7,
+          "comment": "She's always on time and keeps our son engaged throughout her stay."
+        }
+      ],
+      "education": "Master's in Educational Science, Certified in Special Needs Education",
+      "kids_age": "3 to 11 years old",
+      "price_per_hour": 19,
+      "location": "Cherkasy, Ukraine",
+      "about": "My educational background allows me to cater to children with diverse learning needs. I focus on inclusive and engaging activities that promote development and fun.",
+      "characters": ["patient", "knowledgeable", "empathetic", "consistent"],
+      "rating": 4.75
+    },
+    "nanny12": {
+      "name": "Viktoria Tkachenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/1.jpg",
+      "birthday": "1994-04-10T22:25:57.010+00:00",
+      "experience": "8 years",
+      "reviews": [
+        {
+          "reviewer": "Sergiy R.",
+          "rating": 5,
+          "comment": "Viktoria is a natural with children. Our daughter warmed up to her immediately."
+        },
+        {
+          "reviewer": "Nataliia P.",
+          "rating": 4.9,
+          "comment": "She's professional, punctual, and very caring. Highly recommend!"
+        }
+      ],
+      "education": "Bachelor's in Child Psychology, First Aid Training",
+      "kids_age": "1 to 8 years old",
+      "price_per_hour": 20,
+      "location": "Zhytomyr, Ukraine",
+      "about": "I combine my background in psychology with practical childcare skills to provide a nurturing environment. I believe in fostering emotional intelligence and creativity in children.",
+      "characters": ["nurturing", "insightful", "professional", "reliable"],
+      "rating": 4.95
+    },
+    "nanny13": {
+      "name": "Svitlana Bondarenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/3.jpg",
+      "birthday": "1991-04-10T22:25:57.010+00:00",
+      "experience": "10 years",
+      "reviews": [
+        {
+          "reviewer": "Ivan S.",
+          "rating": 4.7,
+          "comment": "Svitlana is very experienced and handle difficult situations with ease."
+        },
+        {
+          "reviewer": "Olga B.",
+          "rating": 4.8,
+          "comment": "She's been with our family for years and she's become like a family member."
+        }
+      ],
+      "education": "Diploma in Childcare and Education, Advanced CPR Certified",
+      "kids_age": "6 months to 12 years old",
+      "price_per_hour": 22,
+      "location": "Kyiv, Ukraine",
+      "about": "With over a decade in childcare, I've worked with infants to teenagers. I bring a wealth of experience and a calm, structured approach to every household.",
+      "characters": ["calm", "experienced", "dependable", "organized"],
+      "rating": 4.75
+    },
+    "nanny14": {
+      "name": "Olena Stepanenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/5.jpg",
+      "birthday": "1998-04-10T22:25:57.010+00:00",
+      "experience": "5 years",
+      "reviews": [
+        {
+          "reviewer": "Roman K.",
+          "rating": 4.9,
+          "comment": "Olena is energetic and always brings fun outdoor activities for the kids."
+        },
+        {
+          "reviewer": "Iryna L.",
+          "rating": 5,
+          "comment": "She's fantastic with our twins. Very patient and attentive!"
+        }
+      ],
+      "education": "Bachelor's in Early Childhood Education, Creative Play Specialist Cert",
+      "kids_age": "2 to 10 years old",
+      "price_per_hour": 18,
+      "location": "Sumy, Ukraine",
+      "about": "I specialize in creative play and believe it's essential for children's cognitive and social development. I enjoy bringing arts, music, and outdoor exploration into my care routine.",
+      "characters": ["energetic", "creative", "patient", "resourceful"],
+      "rating": 4.95
+    },
+    "nanny15": {
+      "name": "Iryna Ponomarenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/12.jpg",
+      "birthday": "1993-04-10T22:25:57.010+00:00",
+      "experience": "7 years",
+      "reviews": [
+        {
+          "reviewer": "Andriy V.",
+          "rating": 4.8,
+          "comment": "Iryna is very reliable and has a great way with my toddler."
+        },
+        {
+          "reviewer": "Elena T.",
+          "rating": 4.7,
+          "comment": "She's always on time and keeps the kids engaged with educational games."
+        }
+      ],
+      "education": "Bachelor's in Childhood Development, Bilingual Education Specialist",
+      "kids_age": "1 to 8 years old",
+      "price_per_hour": 19,
+      "location": "Kharkiv, Ukraine",
+      "about": "I incorporate language learning into play, making it a natural and fun experience for children. I'm committed to providing a multilingual and intellectually stimulating environment.",
+      "characters": ["bilingual", "attentive", "educative", "reliable"],
+      "rating": 4.75
+    },
+    "nanny16": {
+      "name": "Yuliia Moroz",
+      "avatar_url": "https://ftp.goit.study/img/avatars/15.jpg",
+      "birthday": "1996-04-10T22:25:57.010+00:00",
+      "experience": "6 years",
+      "reviews": [
+        {
+          "reviewer": "Dmytro G.",
+          "rating": 4.9,
+          "comment": "Yuliia is very friendly and my kids look forward to seeing her every time."
+        },
+        {
+          "reviewer": "Nataliya M.",
+          "rating": 5,
+          "comment": "She's been a great help to our family. Very caring and trustworthy!"
+        }
+      ],
+      "education": "Bachelor's in Social Work, Child Welfare Training",
+      "kids_age": "3 to 12 years old",
+      "price_per_hour": 17,
+      "location": "Rivno, Ukraine",
+      "about": "My background in social work helps me understand familial dynamics and provide supportive care for children. I focus on creating a stable and loving environment where children can thrive.",
+      "characters": ["compassionate", "supportive", "trustworthy", "friendly"],
+      "rating": 4.95
+    },
+    "nanny17": {
+      "name": "Tetyana Marchenko",
+      "avatar_url": "https://ftp.goit.study/img/avatars/53.jpeg",
+      "birthday": "1990-04-10T22:25:57.010+00:00",
+      "experience": "9 years",
+      "reviews": [
+        {
+          "reviewer": "Nadiia P.",
+          "rating": 4.8,
+          "comment": "Tetyana is very experienced and handles her responsibilities with great care."
+        },
+        {
+          "reviewer": "Oksana R.",
+          "rating": 4.9,
+          "comment": "She brings structure and fun into our household. Our children have benefited greatly from her presence."
+        }
+      ],
+      "education": "Bachelor's in Childcare Management, Advanced Training in Montessori Method",
+      "kids_age": "1 to 12 years old",
+      "price_per_hour": 20,
+      "location": "Chernihiv, Ukraine",
+      "about": "I combine traditional teaching methods with the Montessori approach, emphasizing independence, respect, and understanding. Each child is unique, and I pride myself on recognizing and nurturing their individual potentials.",
+      "characters": ["loving", "structured", "methodical", "observant"],
+      "rating": 4.95
+    }
+  }
+}

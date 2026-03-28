@@ -1,0 +1,43 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f3f3;
+  --text-primary: #111111;
+  --text-secondary: rgba(17, 17, 17, 0.5);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* MUI Customizations to match Figma */
+.mui-card {
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.mui-button-primary {
+  border-radius: 30px;
+  font-weight: 600;
+  padding: 14px 40px;
+}
