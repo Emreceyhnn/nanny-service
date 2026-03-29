@@ -1,34 +1,50 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { 
-  Dialog, 
-  DialogTitle, 
-  DialogContent, 
-  IconButton, 
-  Typography, 
-  TextField, 
-  Button, 
+import React from "react";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import dayjs from "dayjs";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import toast from "react-hot-toast";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  IconButton,
+  Typography,
+  TextField,
+  Button,
   Box,
   Grid,
-  Avatar
-} from '@mui/material';
-import { Close } from '@mui/icons-material';
-import type { Nanny } from '../../lib/type/nannies';
-import { db } from '../../lib/firebase';
-import { ref, push, serverTimestamp } from 'firebase/database';
-import { useAuth } from '../../components/auth/AuthContext';
+  Avatar,
+} from "@mui/material";
+import { Close } from "@mui/icons-material";
+import type { Nanny } from "../../lib/type/nannies";
+import { db } from "../../lib/firebase";
+import { ref, push, serverTimestamp } from "firebase/database";
+import { useAuth } from "../../hooks/useAuth";
 
 const schema = yup.object().shape({
-  address: yup.string().required('Address is required'),
-  phone: yup.string().required('Phone number is required'),
-  age: yup.number().typeError('Age must be a number').required('Child age is required'),
-  time: yup.string().required('Time is required'),
-  email: yup.string().email('Invalid email').required('Email is required'),
-  name: yup.string().required('Parent name is required'),
+  address: yup.string().required("Address is required"),
+  phone: yup.string().required("Phone number is required"),
+  age: yup
+    .number()
+    .typeError("Age must be a number")
+    .required("Child age is required"),
+  time: yup.mixed().required("Time is required"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  name: yup.string().required("Parent name is required"),
   comment: yup.string(),
 });
+
+interface AppointmentFormValues {
+  address: string;
+  phone: string;
+  age: number;
+  time: dayjs.Dayjs | null;
+  email: string;
+  name: string;
+  comment?: string;
+}
 
 interface Props {
   nanny: Nanny;
@@ -36,74 +52,107 @@ interface Props {
 }
 
 const AppointmentModal: React.FC<Props> = ({ nanny, onClose }) => {
-  const { state: { user } } = useAuth();
+  const {
+    state: { user },
+  } = useAuth();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(schema)
+
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<AppointmentFormValues>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: yupResolver(schema) as any,
+    defaultValues: {
+      time: null,
+    },
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: AppointmentFormValues) => {
     if (!user) return;
     setIsSubmitting(true);
     try {
-      const appointmentsRef = ref(db, `appointments/${nanny.id}`);
-      await push(appointmentsRef, {
+      const appointmentsRef = ref(db, "appointments");
+
+      const formattedData = {
         ...data,
+        time: dayjs(data.time).format("HH:mm"),
         nannyId: nanny.id,
+        nannyName: nanny.name,
+        nannyAvatar: nanny.avatar_url,
         userId: user.uid,
         createdAt: serverTimestamp(),
-      });
-      alert('Appointment requested successfully!');
+      };
+
+      await push(appointmentsRef, formattedData);
+      toast.success("Appointment requested successfully!");
       onClose();
     } catch (error) {
-      console.error('Failed to book appointment:', error);
-      alert('Failed to send request. Please try again.');
+      console.error("Failed to book appointment:", error);
+      toast.error("Failed to send request. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <Dialog 
-      open={true} 
+    <Dialog
+      open={true}
       onClose={onClose}
       fullWidth
       maxWidth="sm"
       PaperProps={{
-        sx: { 
-          borderRadius: '30px', 
+        sx: {
+          borderRadius: "30px",
           p: { xs: 2, md: 4 },
-          boxShadow: '0 20px 60px rgba(0,0,0,0.1)'
-        }
+          boxShadow: "0 20px 60px rgba(0,0,0,0.1)",
+        },
       }}
     >
-      <Box sx={{ position: 'relative' }}>
+      <Box sx={{ position: "relative" }}>
         <IconButton
           onClick={onClose}
-          sx={{ position: 'absolute', right: 0, top: 0, color: 'text.secondary' }}
+          sx={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            color: "text.secondary",
+          }}
         >
           <Close />
         </IconButton>
 
         <DialogTitle component="div" sx={{ p: 0, mb: 2 }}>
-          <Typography variant="h3" sx={{ fontWeight: 700, mb: 1 }}>
-            Make an appointment
+          <Typography
+            variant="h3"
+            sx={{ fontWeight: 500, fontSize: "40px", mb: 1 }}
+          >
+            Make an appointment with a babysitter
           </Typography>
-          <Typography variant="body1" sx={{ color: 'rgba(0,0,0,0.5)', lineHeight: 1.6 }}>
-            To make an appointment with <Box component="span" sx={{ color: 'primary.main', fontWeight: 600 }}>{nanny.name}</Box>, please fill out the form below. Our manager will contact you as soon as possible.
+          <Typography
+            variant="body1"
+            sx={{ color: "rgba(0,0,0,0.5)", lineHeight: 1.6 }}
+          >
+            Arranging a meeting with a caregiver for your child is the first
+            step to creating a safe and comfortable environment. Fill out the
+            form below so we can match you with the perfect care partner.
           </Typography>
         </DialogTitle>
 
-        <DialogContent sx={{ p: 0, mt: 4 }}>
-          {/* Mini Profile */}
-          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', mb: 4 }}>
-            <Avatar 
-              src={nanny.avatar_url} 
-              variant="rounded" 
-              sx={{ width: 44, height: 44, borderRadius: '12px' }} 
+        <DialogContent sx={{ p: 0, mt: 3 }}>
+          <Box sx={{ display: "flex", gap: 2, alignItems: "center", mb: 4 }}>
+            <Avatar
+              src={nanny.avatar_url}
+              variant="rounded"
+              sx={{ width: 44, height: 44, borderRadius: "12px" }}
             />
             <Box>
-              <Typography variant="caption" sx={{ color: 'rgba(0,0,0,0.5)', display: 'block' }}>
+              <Typography
+                variant="caption"
+                sx={{ color: "rgba(0,0,0,0.5)", display: "block" }}
+              >
                 Your nanny
               </Typography>
               <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
@@ -112,29 +161,83 @@ const AppointmentModal: React.FC<Props> = ({ nanny, onClose }) => {
             </Box>
           </Box>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Grid container spacing={3}>
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          <form onSubmit={handleSubmit(onSubmit as any)}>
+            <Grid container spacing={2}>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <TextField fullWidth placeholder="Address" {...register('address')} error={!!errors.address} helperText={errors.address?.message as string} />
+                <TextField
+                  fullWidth
+                  placeholder="Address"
+                  {...register("address")}
+                  error={!!errors.address}
+                  helperText={errors.address?.message as string}
+                />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <TextField fullWidth placeholder="+380" {...register('phone')} error={!!errors.phone} helperText={errors.phone?.message as string} />
+                <TextField
+                  fullWidth
+                  placeholder="+380"
+                  {...register("phone")}
+                  error={!!errors.phone}
+                  helperText={errors.phone?.message as string}
+                />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <TextField fullWidth placeholder="Child's age" {...register('age')} error={!!errors.age} helperText={errors.age?.message as string} />
+                <TextField
+                  fullWidth
+                  placeholder="Child's age"
+                  {...register("age")}
+                  error={!!errors.age}
+                  helperText={errors.age?.message as string}
+                />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <TextField fullWidth placeholder="00:00" {...register('time')} error={!!errors.time} helperText={errors.time?.message as string} />
+                <Controller
+                  name="time"
+                  control={control}
+                  render={({ field }) => (
+                    <TimePicker
+                      {...field}
+                      ampm={false}
+                      sx={{ width: "100%" }}
+                      slotProps={{
+                        textField: {
+                          fullWidth: true,
+                          error: !!errors.time,
+                          helperText: errors.time?.message as string,
+                        },
+                      }}
+                    />
+                  )}
+                />
               </Grid>
-              
+
               <Grid size={12}>
-                <TextField fullWidth placeholder="Email" {...register('email')} error={!!errors.email} helperText={errors.email?.message as string} />
+                <TextField
+                  fullWidth
+                  placeholder="Email"
+                  {...register("email")}
+                  error={!!errors.email}
+                  helperText={errors.email?.message as string}
+                />
               </Grid>
               <Grid size={12}>
-                <TextField fullWidth placeholder="Father's or mother's name" {...register('name')} error={!!errors.name} helperText={errors.name?.message as string} />
+                <TextField
+                  fullWidth
+                  placeholder="Father's or mother's name"
+                  {...register("name")}
+                  error={!!errors.name}
+                  helperText={errors.name?.message as string}
+                />
               </Grid>
               <Grid size={12}>
-                <TextField fullWidth multiline rows={3} placeholder="Comment" {...register('comment')} />
+                <TextField
+                  fullWidth
+                  multiline
+                  rows={3}
+                  placeholder="Comment"
+                  {...register("comment")}
+                />
               </Grid>
 
               <Grid size={12}>
@@ -144,14 +247,14 @@ const AppointmentModal: React.FC<Props> = ({ nanny, onClose }) => {
                   fullWidth
                   size="large"
                   disabled={isSubmitting}
-                  sx={{ 
-                    py: 1.5, 
-                    mt: 2, 
-                    bgcolor: 'primary.main',
-                    '&:hover': { bgcolor: 'primary.main', opacity: 0.9 }
+                  sx={{
+                    py: 1.5,
+                    mt: 2,
+                    bgcolor: "primary.main",
+                    "&:hover": { bgcolor: "primary.main", opacity: 0.9 },
                   }}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send'}
+                  {isSubmitting ? "Sending..." : "Send"}
                 </Button>
               </Grid>
             </Grid>

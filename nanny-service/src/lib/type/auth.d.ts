@@ -11,8 +11,8 @@ export interface AuthState {
 }
 
 export interface AuthActions {
-  login: (data: any) => Promise<void>;
-  signup: (data: any) => Promise<void>;
+  login: (data: unknown) => Promise<void>;
+  signup: (data: unknown) => Promise<void>;
   logout: () => Promise<void>;
   clearError: () => void;
 }

@@ -2,9 +2,7 @@ export interface HomePageState {
   isLoading: boolean;
 }
 
-export interface HomePageActions {
-  // Navigation is handled by Link
-}
+export type HomePageActions = Record<string, never>;
 
 export interface HomePageProps {
   state: HomePageState;

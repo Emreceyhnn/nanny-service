@@ -28,12 +28,15 @@ const loginSchema = yup.object().shape({
 interface Props {
   type: 'login' | 'signup';
   onClose: () => void;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: LoginFormValues | SignupFormValues) => void;
 }
+
+type LoginFormValues = yup.InferType<typeof loginSchema>;
+type SignupFormValues = yup.InferType<typeof signupSchema>;
 
 const AuthModal: React.FC<Props> = ({ type, onClose, onSubmit }) => {
   const schema = type === 'signup' ? signupSchema : loginSchema;
-  const { register, handleSubmit, formState: { errors } } = useForm<any>({
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormValues | SignupFormValues>({
     resolver: yupResolver(schema)
   });
 
@@ -78,8 +81,10 @@ const AuthModal: React.FC<Props> = ({ type, onClose, onSubmit }) => {
                   fullWidth
                   placeholder="Name"
                   {...register('name')}
-                  error={!!errors.name}
-                  helperText={errors.name?.message as string}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  error={!!(errors as any).name}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  helperText={(errors as any).name?.message as string}
                 />
               )}
               
