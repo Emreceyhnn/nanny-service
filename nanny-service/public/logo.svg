@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="home-clip">
+      <path d="M256 50 L462 200 V430 C462 452 444 470 422 470 H90 C68 470 50 452 50 430 V200 L256 50 Z" />
+    </clipPath>
+  </defs>
+  
+  <!-- Outer Home Border -->
+  <path d="M256 40 L472 195 V435 C472 462 450 484 422 484 H90 C62 484 40 462 40 435 V195 L256 40 Z" fill="none" stroke="#38CDFF" stroke-width="12" stroke-linejoin="round" />
+  
+  <!-- Soft Background Circle -->
+  <circle cx="256" cy="300" r="160" fill="rgba(240, 63, 59, 0.05)" />
+  
+  <!-- Nanny Figure -->
+  <g id="nanny">
+    <!-- Nanny Hair -->
+    <circle cx="210" cy="190" r="45" fill="#2C3E50" />
+    <path d="M165 190 A45 45 0 0 1 255 190" fill="#2C3E50" />
+    <!-- Nanny Face -->
+    <circle cx="210" cy="205" r="35" fill="#FFE0BD" />
+    <!-- Nanny Body/Shirt (Blue) -->
+    <path d="M140 310 Q140 250 210 250 Q280 250 280 310 V470 H140 Z" fill="#38CDFF" />
+    <!-- Nanny Neck -->
+    <path d="M195 240 L225 240 L210 260 Z" fill="#FFE0BD" />
+  </g>
+  
+  <!-- Child Figure -->
+  <g id="child">
+    <!-- Child Hair (Ponytail) -->
+    <circle cx="340" cy="260" r="25" fill="#2C3E50" />
+    <path d="M340 260 Q360 260 365 290" stroke="#2C3E50" stroke-width="12" fill="none" stroke-linecap="round" />
+    <!-- Child Face -->
+    <circle cx="300" cy="275" r="28" fill="#FFE0BD" />
+    <circle cx="300" cy="260" r="30" fill="#2C3E50" clip-path="inset(0 0 30 0)" /> <!-- bangs -->
+    <path d="M270 275 A30 30 0 0 1 330 275" fill="#2C3E50" />
+    <!-- Child Body/Shirt (Pink) -->
+    <path d="M250 350 Q250 310 300 310 Q350 310 350 350 V470 H250 Z" fill="#F03F3B" />
+  </g>
+  
+  <!-- Hugging Arms (Simplified) -->
+  <path d="M280 360 Q320 360 320 400" fill="none" stroke="#FFE0BD" stroke-width="18" stroke-linecap="round" />
+  <path d="M210 330 Q250 330 250 380" fill="none" stroke="#FFE0BD" stroke-width="22" stroke-linecap="round" />
+  
+  <!-- The Heart -->
+  <path d="M380 150 C380 130 360 120 350 120 C335 120 325 135 325 135 C325 135 315 120 300 120 C290 120 270 130 270 150 C270 180 325 210 325 210 C325 210 380 180 380 150 Z" fill="#F03F3B" />
+  
+  <!-- Bottom Foundation -->
+  <path d="M40 435 Q256 460 472 435" fill="none" stroke="#2C3E50" stroke-width="8" stroke-linecap="round" opacity="0.3" />
+</svg>
