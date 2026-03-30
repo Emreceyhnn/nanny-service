@@ -22,6 +22,7 @@ const App = () => {
           <Suspense
             fallback={<div className="loading-screen">Loading...</div>}
           >
+
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/nannies" element={<NanniesPage />} />
