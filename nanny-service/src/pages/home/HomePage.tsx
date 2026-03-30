@@ -8,7 +8,7 @@ import {
   Avatar,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import bgImage from "../../assets/bg.webp";
+const bgImage = "/assets/bg.webp";
 import { motion } from "framer-motion";
 import { ArrowOutward, Check } from "@mui/icons-material";
 
@@ -109,15 +109,28 @@ const HomePage: React.FC = () => {
             }}
           >
             <Box
-              component="img"
-              src={bgImage}
-              alt="Nanny and Child"
+              component="picture"
               sx={{
                 width: "100%",
                 height: "100%",
-                objectFit: "cover",
+                display: "block",
               }}
-            />
+            >
+              <source media="(max-width: 768px)" srcSet="/assets/bg-mobile.webp" />
+              <source media="(min-width: 769px)" srcSet="/assets/bg.webp" />
+              <Box
+                component="img"
+                src={bgImage}
+                alt="Nanny and Child"
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+                // @ts-ignore
+                fetchPriority="high"
+              />
+            </Box>
 
             <Box
               sx={{
