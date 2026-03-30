@@ -37,6 +37,7 @@ export type SignupFormValues = yup.InferType<typeof signupSchema>;
 const AuthModal: React.FC<Props> = ({ type, onClose, onSubmit }) => {
   const schema = type === 'signup' ? signupSchema : loginSchema;
   const { register, handleSubmit, formState: { errors } } = useForm<SignupFormValues>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: yupResolver(schema) as any
   });
 
@@ -83,8 +84,8 @@ const AuthModal: React.FC<Props> = ({ type, onClose, onSubmit }) => {
                   placeholder="Name"
                   {...register('name')}
                   inputProps={{ maxLength: 50 }}
-                  error={!!(errors as any).name}
-                  helperText={(errors as any).name?.message as string}
+                  error={!!errors.name}
+                  helperText={errors.name?.message}
                 />
               )}
               

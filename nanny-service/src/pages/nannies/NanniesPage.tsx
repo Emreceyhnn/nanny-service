@@ -164,13 +164,14 @@ const NanniesPage = () => {
         </Box>
 
         <Box>
-          {filteredNannies.map((nanny) => (
+          {filteredNannies.map((nanny, index) => (
             <Fade in={true} key={nanny.id}>
               <Box>
                 <NannyCard
                   nanny={nanny}
                   isFavorite={state.favorites.includes(nanny.id)}
                   onToggleFavorite={() => actions.toggleFavorite(nanny.id)}
+                  isPriority={index === 0}
                 />
               </Box>
             </Fade>

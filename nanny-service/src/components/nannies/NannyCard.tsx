@@ -20,12 +20,14 @@ interface Props {
   nanny: Nanny;
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  isPriority?: boolean;
 }
 
 const NannyCard: React.FC<Props> = ({
   nanny,
   isFavorite,
   onToggleFavorite,
+  isPriority = false,
 }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [showAppointment, setShowAppointment] = React.useState(false);
@@ -94,7 +96,12 @@ const NannyCard: React.FC<Props> = ({
           <Avatar
             src={nanny.avatar_url}
             alt={nanny.name}
-            imgProps={{ loading: "lazy" }}
+            imgProps={{ 
+              loading: isPriority ? "eager" : "lazy",
+              // @ts-expect-error - fetchpriority is not yet in React types but is supported by modern browsers
+              fetchpriority: isPriority ? "high" : "auto",
+              decoding: "async"
+            }}
             sx={{ width: "100%", height: "100%", borderRadius: "15px" }}
           />
           <Box
