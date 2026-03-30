@@ -31,13 +31,13 @@ interface Props {
   onSubmit: (data: LoginFormValues | SignupFormValues) => void;
 }
 
-type LoginFormValues = yup.InferType<typeof loginSchema>;
-type SignupFormValues = yup.InferType<typeof signupSchema>;
+export type LoginFormValues = yup.InferType<typeof loginSchema>;
+export type SignupFormValues = yup.InferType<typeof signupSchema>;
 
 const AuthModal: React.FC<Props> = ({ type, onClose, onSubmit }) => {
   const schema = type === 'signup' ? signupSchema : loginSchema;
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormValues | SignupFormValues>({
-    resolver: yupResolver(schema)
+  const { register, handleSubmit, formState: { errors } } = useForm<SignupFormValues>({
+    resolver: yupResolver(schema) as any
   });
 
   return (
@@ -57,6 +57,7 @@ const AuthModal: React.FC<Props> = ({ type, onClose, onSubmit }) => {
       <Box sx={{ position: 'relative' }}>
         <IconButton
           onClick={onClose}
+          aria-label="Close modal"
           sx={{ position: 'absolute', right: 0, top: 0, color: 'text.secondary' }}
         >
           <Close />
@@ -82,9 +83,7 @@ const AuthModal: React.FC<Props> = ({ type, onClose, onSubmit }) => {
                   placeholder="Name"
                   {...register('name')}
                   inputProps={{ maxLength: 50 }}
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   error={!!(errors as any).name}
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   helperText={(errors as any).name?.message as string}
                 />
               )}

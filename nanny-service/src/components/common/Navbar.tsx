@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { Menu as MenuIcon, Circle } from "@mui/icons-material";
 import AuthModal from "../auth/AuthModal";
+import type { LoginFormValues, SignupFormValues } from "../auth/AuthModal";
 import toast from "react-hot-toast";
 import { useUserAppointments } from "../../hooks/useUserAppointments";
 import AppointmentListItem from "./AppointmentListItem";
@@ -72,6 +73,7 @@ const Navbar: React.FC = () => {
               variant="h6"
               component={NavLink}
               to="/"
+              aria-label="Nanny Services Home"
               sx={{
                 fontWeight: 650,
                 color: "white",
@@ -93,7 +95,7 @@ const Navbar: React.FC = () => {
                 ml: -30,
               }}
             >
-              <NavLink to="/" end style={{ textDecoration: "none" }}>
+              <NavLink to="/" end style={{ textDecoration: "none" }} aria-label="Home page">
                 {({ isActive }) => (
                   <Box
                     sx={{
@@ -121,7 +123,7 @@ const Navbar: React.FC = () => {
                 )}
               </NavLink>
 
-              <NavLink to="/nannies" style={{ textDecoration: "none" }}>
+              <NavLink to="/nannies" style={{ textDecoration: "none" }} aria-label="Nannies catalog">
                 {({ isActive }) => (
                   <Box
                     sx={{
@@ -150,7 +152,7 @@ const Navbar: React.FC = () => {
               </NavLink>
 
               {user && (
-                <NavLink to="/favorites" style={{ textDecoration: "none" }}>
+                <NavLink to="/favorites" style={{ textDecoration: "none" }} aria-label="My favorite nannies">
                   {({ isActive }) => (
                     <Box
                       sx={{
@@ -189,6 +191,7 @@ const Navbar: React.FC = () => {
                     key={c.name}
                     size="small"
                     onClick={() => setColor(c.name)}
+                    aria-label={`Switch theme color to ${c.name}`}
                     sx={{
                       p: 0.5,
                       border: color === c.name ? "2px solid white" : "none",
@@ -203,6 +206,9 @@ const Navbar: React.FC = () => {
                 <Box sx={{ display: "flex", gap: { xs: 1, sm: 2 }, alignItems: "center" }}>
                   <Box
                     onClick={(e) => setUserMenuAnchor(e.currentTarget)}
+                    role="button"
+                    aria-label="User menu and appointments"
+                    aria-haspopup="true"
                     sx={{
                       display: "flex",
                       alignItems: "center",
@@ -344,6 +350,7 @@ const Navbar: React.FC = () => {
                               key={c.name}
                               size="small"
                               onClick={() => setColor(c.name)}
+                              aria-label={`Switch theme color to ${c.name}`}
                               sx={{
                                 p: 0.5,
                                 border: color === c.name ? `2px solid ${c.value}` : "2px solid transparent",
@@ -406,6 +413,7 @@ const Navbar: React.FC = () => {
               <IconButton
                 sx={{ display: { xs: "flex", md: "none" }, color: "white" }}
                 onClick={(e) => setAnchorEl(e.currentTarget)}
+                aria-label="Open mobile menu"
               >
                 <MenuIcon />
               </IconButton>
@@ -448,10 +456,11 @@ const Navbar: React.FC = () => {
           onSubmit={async (data) => {
             try {
               if (authModal === "signup") {
-                const signupData = data as any;
+                const signupData = data as SignupFormValues;
                 await signup(signupData.email, signupData.password, signupData.name);
               } else {
-                await login(data.email, data.password);
+                const loginData = data as LoginFormValues;
+                await login(loginData.email, loginData.password);
               }
               setAuthModal(null);
             } catch (error) {

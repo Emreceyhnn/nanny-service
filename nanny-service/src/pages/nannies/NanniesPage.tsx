@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { Box, Container, Button, CircularProgress, Fade } from "@mui/material";
 import type {
   NanniesPageState,
@@ -119,7 +119,7 @@ const NanniesPage = () => {
     syncFavorites();
   }, [user]);
 
-  const getFilteredNannies = () => {
+  const filteredNannies = useMemo(() => {
     let filtered = [...state.nannies];
     const { sort } = state.filters;
 
@@ -136,9 +136,7 @@ const NanniesPage = () => {
     if (sort === "rating-low") filtered.sort((a, b) => a.rating - b.rating);
 
     return filtered.slice(0, state.visibleCount);
-  };
-
-  const filteredNannies = getFilteredNannies();
+  }, [state.nannies, state.filters, state.visibleCount]);
 
   if (state.isLoading && state.nannies.length === 0) {
     return (
@@ -184,6 +182,7 @@ const NanniesPage = () => {
             <Button
               variant="contained"
               onClick={actions.loadMore}
+              aria-label="Load more nannies"
               sx={{
                 px: 6,
                 py: 1.5,

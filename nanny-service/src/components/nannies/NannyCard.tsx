@@ -93,6 +93,8 @@ const NannyCard: React.FC<Props> = ({
         >
           <Avatar
             src={nanny.avatar_url}
+            alt={nanny.name}
+            imgProps={{ loading: "lazy" }}
             sx={{ width: "100%", height: "100%", borderRadius: "15px" }}
           />
           <Box
@@ -196,6 +198,7 @@ const NannyCard: React.FC<Props> = ({
                   onToggleFavorite();
                 }
               }}
+              aria-label={isFavorite ? "Remove from favorite" : "Add to favorite"}
               sx={{
                 ml: { xs: "auto", sm: 1 },
                 bgcolor: { xs: "rgba(0,0,0,0.03)", sm: "transparent" },
@@ -245,6 +248,8 @@ const NannyCard: React.FC<Props> = ({
 
         <Button
           onClick={() => setIsExpanded(!isExpanded)}
+          aria-expanded={isExpanded}
+          aria-label={isExpanded ? "Show less details" : "Read more about nanny"}
           sx={{
             p: 0,
             color: "black",
@@ -262,6 +267,7 @@ const NannyCard: React.FC<Props> = ({
               <Box key={i} sx={{ mb: 3 }}>
                 <Box sx={{ display: "flex", gap: 2, mb: 1 }}>
                   <Avatar
+                    alt={review.reviewer}
                     sx={{
                       bgcolor: "rgba(0,0,0,0.05)",
                       color: "primary.main",
@@ -320,4 +326,4 @@ const NannyCard: React.FC<Props> = ({
   );
 };
 
-export default NannyCard;
+export default React.memo(NannyCard);
