@@ -25,12 +25,11 @@ const Navbar: React.FC = () => {
     login,
     logout,
     signup,
+    authModal,
+    setAuthModal,
   } = useAuth();
   const location = useLocation();
   const { color, setColor } = useAppTheme();
-  const [authModal, setAuthModal] = React.useState<"login" | "signup" | null>(
-    null,
-  );
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [userMenuAnchor, setUserMenuAnchor] =
     React.useState<null | HTMLElement>(null);
@@ -448,10 +447,12 @@ const Navbar: React.FC = () => {
           onClose={() => setAuthModal(null)}
           onSubmit={async (data) => {
             try {
-                if (authModal === "signup")
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                await signup(data.email, data.password, (data as any).name);
-              else await login(data.email, data.password);
+              if (authModal === "signup") {
+                const signupData = data as any;
+                await signup(signupData.email, signupData.password, signupData.name);
+              } else {
+                await login(data.email, data.password);
+              }
               setAuthModal(null);
             } catch (error) {
               const message =

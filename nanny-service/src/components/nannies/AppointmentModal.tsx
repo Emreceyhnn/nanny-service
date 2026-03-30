@@ -24,16 +24,18 @@ import { ref, push, serverTimestamp } from "firebase/database";
 import { useAuth } from "../../hooks/useAuth";
 
 const schema = yup.object().shape({
-  address: yup.string().required("Address is required"),
-  phone: yup.string().required("Phone number is required"),
+  address: yup.string().required("Address is required").min(5, "Address must be at least 5 characters").max(200, "Address too long"),
+  phone: yup.string().required("Phone number is required").min(9, "Min 9 digits").max(15, "Max 15 digits"),
   age: yup
     .number()
     .typeError("Age must be a number")
-    .required("Child age is required"),
+    .required("Child age is required")
+    .min(0, "Age cannot be negative")
+    .max(18, "Max age is 18"),
   time: yup.mixed().required("Time is required"),
-  email: yup.string().email("Invalid email").required("Email is required"),
-  name: yup.string().required("Parent name is required"),
-  comment: yup.string(),
+  email: yup.string().email("Invalid email").required("Email is required").min(5, "Email too short").max(100, "Email too long"),
+  name: yup.string().required("Parent name is required").min(2, "Name too short").max(100, "Name too long"),
+  comment: yup.string().max(1000, "Comment too long"),
 });
 
 interface AppointmentFormValues {
@@ -169,6 +171,7 @@ const AppointmentModal: React.FC<Props> = ({ nanny, onClose }) => {
                   fullWidth
                   placeholder="Address"
                   {...register("address")}
+                  inputProps={{ minLength: 5, maxLength: 200 }}
                   error={!!errors.address}
                   helperText={errors.address?.message as string}
                 />
@@ -178,6 +181,7 @@ const AppointmentModal: React.FC<Props> = ({ nanny, onClose }) => {
                   fullWidth
                   placeholder="+380"
                   {...register("phone")}
+                  inputProps={{ minLength: 9, maxLength: 15 }}
                   error={!!errors.phone}
                   helperText={errors.phone?.message as string}
                 />
@@ -185,8 +189,10 @@ const AppointmentModal: React.FC<Props> = ({ nanny, onClose }) => {
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
+                  type="number"
                   placeholder="Child's age"
                   {...register("age")}
+                  inputProps={{ min: 0, max: 18 }}
                   error={!!errors.age}
                   helperText={errors.age?.message as string}
                 />
@@ -217,6 +223,7 @@ const AppointmentModal: React.FC<Props> = ({ nanny, onClose }) => {
                   fullWidth
                   placeholder="Email"
                   {...register("email")}
+                  inputProps={{ minLength: 5, maxLength: 100 }}
                   error={!!errors.email}
                   helperText={errors.email?.message as string}
                 />
@@ -226,6 +233,7 @@ const AppointmentModal: React.FC<Props> = ({ nanny, onClose }) => {
                   fullWidth
                   placeholder="Father's or mother's name"
                   {...register("name")}
+                  inputProps={{ minLength: 2, maxLength: 100 }}
                   error={!!errors.name}
                   helperText={errors.name?.message as string}
                 />
@@ -237,6 +245,7 @@ const AppointmentModal: React.FC<Props> = ({ nanny, onClose }) => {
                   rows={3}
                   placeholder="Comment"
                   {...register("comment")}
+                  inputProps={{ maxLength: 1000 }}
                 />
               </Grid>
 

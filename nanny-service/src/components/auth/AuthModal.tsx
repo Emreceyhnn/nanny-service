@@ -15,14 +15,14 @@ import {
 import { Close } from '@mui/icons-material';
 
 const signupSchema = yup.object().shape({
-  name: yup.string().required('Name is required'),
-  email: yup.string().email('Invalid email').required('Email is required'),
-  password: yup.string().min(6, 'Min 6 characters').required('Password is required'),
+  name: yup.string().required('Name is required').max(50, 'Name must be at most 50 characters'),
+  email: yup.string().email('Invalid email').required('Email is required').max(100, 'Email must be at most 100 characters'),
+  password: yup.string().min(6, 'Min 6 characters').max(32, 'Max 32 characters').required('Password is required'),
 });
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email('Invalid email').required('Email is required'),
-  password: yup.string().required('Password is required'),
+  email: yup.string().email('Invalid email').required('Email is required').max(100, 'Email must be at most 100 characters'),
+  password: yup.string().required('Password is required').max(32, 'Password too long'),
 });
 
 interface Props {
@@ -81,6 +81,7 @@ const AuthModal: React.FC<Props> = ({ type, onClose, onSubmit }) => {
                   fullWidth
                   placeholder="Name"
                   {...register('name')}
+                  inputProps={{ maxLength: 50 }}
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   error={!!(errors as any).name}
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -92,15 +93,17 @@ const AuthModal: React.FC<Props> = ({ type, onClose, onSubmit }) => {
                 fullWidth
                 placeholder="Email"
                 {...register('email')}
+                inputProps={{ maxLength: 100 }}
                 error={!!errors.email}
                 helperText={errors.email?.message as string}
               />
 
-              <TextField
+               <TextField
                 fullWidth
                 type="password"
                 placeholder="Password"
                 {...register('password')}
+                inputProps={{ maxLength: 32 }}
                 error={!!errors.password}
                 helperText={errors.password?.message as string}
               />

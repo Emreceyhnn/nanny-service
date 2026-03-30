@@ -31,11 +31,12 @@ const NannyCard: React.FC<Props> = ({
   const [showAppointment, setShowAppointment] = React.useState(false);
   const {
     state: { user },
+    setAuthModal,
   } = useAuth();
 
   const handleMakeAppointment = () => {
     if (!user) {
-      alert("Please log in to make an appointment");
+      setAuthModal("login");
       return;
     }
     setShowAppointment(true);
@@ -188,7 +189,13 @@ const NannyCard: React.FC<Props> = ({
             </Typography>
 
             <IconButton
-              onClick={onToggleFavorite}
+              onClick={() => {
+                if (!user) {
+                  setAuthModal("login");
+                } else {
+                  onToggleFavorite();
+                }
+              }}
               sx={{
                 ml: { xs: "auto", sm: 1 },
                 bgcolor: { xs: "rgba(0,0,0,0.03)", sm: "transparent" },
